@@ -10,6 +10,32 @@
 
 using namespace std;
 
+void print_help(){
+  cout << "-? --help \t print this" << endl << endl;
+
+  cout << "---------- Data settings" << endl;
+  cout << "-f --file <path> \t set file path"  << endl;
+  cout << "-x <number> \t set column for x data" << endl;
+  cout << "-y <number> \t set column for y data" << endl;
+  cout << "-S --std <number> \t set column for deviation data" << endl <<endl;
+
+  cout << "---------- Fitting settings"  << endl;
+
+  cout << "-e --ee-scattering <number> \t use e-e-Scattering with initial guess" << endl;
+
+  cout << "-d --sd-scattering <number> \t use s-d-Scattering with inital guess" << endl;
+
+  cout << "-s --ss-scattering <number> \t use s-s-Scattering with initial guess" << endl;
+
+  cout << "-t --theta <number> \t initial guess of debye temperature" << endl;
+
+  cout << "-r --rho <number> \t initial guess of residual resistance" << endl;
+
+  cout << endl << endl;
+
+}
+
+
 int main(int argc, char** argv){
 
   double *x = NULL, *y = NULL, *std = NULL;
@@ -105,16 +131,15 @@ int main(int argc, char** argv){
 	  break;
 
         case '?':
-          /* getopt_long already printed an error message. */
-          break;
-
         default:
-          abort ();
+	  print_help();
+          exit(-1);
         }
     }
 
   if(!file_set){
     cerr << "no data to fit" << endl;
+    print_help();
     exit(-1);
   }
 
