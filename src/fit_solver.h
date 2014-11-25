@@ -2,7 +2,9 @@
 #define FIT_SOLVER_H__
 
 #include "fit_function.h"
-#include "gsl/gsl_vector.h"
+#include <gsl/gsl_vector.h>
+#include <gsl/gsl_blas.h>
+#include <gsl/gsl_multifit_nlin.h>
 
 class FitSolver{
     public:
@@ -15,10 +17,17 @@ class FitSolver{
         int iterate();
         void end();
         
-        static int calculateChi(const gsl_vector *x, void *pt, gsl_vector *f);
+        static int calculateChi(const gsl_vector *x, void *pt, 
+				gsl_vector *f);
         
 	void getParameters(double *param);
-        
+        void getDeviations(double *dev);
+	
+	double getChiReduced();
+	double getChi();
+		      
+	
+
     protected:
 	double *x, *y, *sigma;
 	FitFunction *function;
@@ -29,8 +38,10 @@ class FitSolver{
 	gsl_multifit_fdfsolver *solver;
 
 	int iter;
-    
+  
     private:
-}
+	void initializeSolver();
+	void initializeFDF();
+};
 
 #endif

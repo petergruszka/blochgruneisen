@@ -1,7 +1,10 @@
+#include <iostream>
+
 #include "fit_function_bloch.h"
 #include "fit_solver.h"
 #include <gsl/gsl_vector.h>
 
+using namespace std;
 
 int main(){
 
@@ -18,11 +21,16 @@ int main(){
 
   double newParameter[] = {1, 1, 1, 1, 1};
 
+  cout << "begin" << endl;
   solver.begin(&v_param.vector);
+  cout << "iterate" << endl;
   solver.iterate();
+
+  cout << "getParameters" << endl;
   solver.getParameters(newParameter);
   for(int i = 0; i < 5; i++){
-    cout << newParameter[i] << endl
+    cout << newParameter[i] << endl;
   }
+  cout << "end" << endl;
   solver.end();
 }
