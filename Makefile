@@ -6,11 +6,17 @@ BIN_DIR = ./bin
 LIBS = -lgsl -lgslcblas
 
 
-fitter: $(BIN_DIR)/fitter
+fitter: $(OBJ_DIR) $(BIN_DIR) $(BIN_DIR)/fitter
 	cp $(BIN_DIR)/fitter fitter
 
 clean:
 	rm fitter $(BIN_DIR)/fitter $(OBJ_DIR)/*
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 $(BIN_DIR)/fitter: $(OBJ_DIR)/file_load.o $(OBJ_DIR)/fit_function_bloch.o $(OBJ_DIR)/fit_solver.o $(OBJ_DIR)/main.o
 	g++ -o $(BIN_DIR)/fitter $(OBJ_DIR)/file_load.o $(OBJ_DIR)/fit_function_bloch.o $(OBJ_DIR)/fit_solver.o $(OBJ_DIR)/main.o $(LIBS)  
