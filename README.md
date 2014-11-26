@@ -36,7 +36,7 @@ Just execute  `make`  and run the application ./fitter with the appropriate para
 
 -s <double>	use Electron-Phonon Scattering (T^5) and set initial guess
 
--d <double> 	use Electron-Phonon Scattering (T^3) and set initial guess
+-d <double> 	use S-D-Electron Scattering (T^3) and set initial guess
 
 -t <double>	set initial guess of debye temperature
 
