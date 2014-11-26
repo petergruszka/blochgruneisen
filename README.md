@@ -20,18 +20,28 @@ Just execute  `make`  and run the application ./fitter with the appropriate para
 ## Parameter
 
 ### Properties
+
 -f <Path>
+
 -x <int>  set x column of your input file. normally it is set to 0
+
 -y <int>  set y column of your input file. normally it is set to 1
+
 -S <int>  set deviation column of your input file. normally it is not used!
+
 
 ## Fit Parameter
 
 -e <double>	use Electron-Electron Scattering (T^2) and set initial guess
+
 -s <double>	use Electron-Phonon Scattering (T^5) and set initial guess
+
 -d <double> 	use Electron-Phonon Scattering (T^3) and set initial guess
+
 -t <double>	set initial guess of debye temperature
+
 -r <double>	set initial guess of residual resistance
+
 
 
 
